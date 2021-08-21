@@ -6,6 +6,9 @@ import {
 import ReactDOM from "react-dom";
 import React from "react";
 import { Menu, Row, Typography } from "antd";
+import { RiCriminalLine } from "react-icons/ri";
+import { FaUniversity } from "react-icons/fa";
+import { AiFillSetting } from "react-icons/ai";
 
 const { Title } = Typography;
 const { SubMenu } = Menu;
@@ -25,20 +28,49 @@ class App extends React.Component {
     return (
       <>
         <Row justify="center" align="top">
-          <Title>JustX</Title>
+          <div class="centered-title">
+            <Title>JustX</Title>
+          </div>
           <Menu
             onClick={this.handleClick}
             selectedKeys={[current]}
             mode="horizontal"
           >
-            <Menu.Item key="mail" icon={<MailOutlined />}>
-              Report
+            <Menu.Item key="mail" icon={<RiCriminalLine />}>
+              <div class="centered-label">
+                {
+                  <RiCriminalLine
+                    size={20}
+                    color="blue"
+                    style={{ marginRight: "5px" }}
+                  />
+                }
+                Report
+              </div>
             </Menu.Item>
             <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
-              Educate
+              <div class="centered-label">
+                {
+                  <FaUniversity
+                    size={20}
+                    color="black"
+                    style={{ marginRight: "5px" }}
+                  />
+                }
+                Educate
+              </div>
             </Menu.Item>
             <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
-              Preferences
+              <div class="centered-label">
+                {
+                  <AiFillSetting
+                    size={20}
+                    color="black"
+                    style={{ marginRight: "5px" }}
+                  />
+                }
+                Educate
+              </div>
             </Menu.Item>
           </Menu>
         </Row>
