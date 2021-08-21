@@ -27,7 +27,11 @@ class App extends React.Component {
     const { current } = this.state;
     return (
       <>
-        <Row justify="center" align="top">
+        <Row
+          style={{ backgroundColor: "rgb(255, 255, 95)" }}
+          justify="center"
+          align="top"
+        >
           <div class="centered-title">
             <Title>JustX</Title>
           </div>
@@ -36,7 +40,7 @@ class App extends React.Component {
             selectedKeys={[current]}
             mode="horizontal"
           >
-            <Menu.Item key="mail" icon={<RiCriminalLine />}>
+            <Menu.Item key="report" icon={<RiCriminalLine />}>
               <div class="centered-label">
                 {
                   <RiCriminalLine
@@ -48,7 +52,7 @@ class App extends React.Component {
                 Report
               </div>
             </Menu.Item>
-            <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
+            <Menu.Item key="educate" disabled icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <FaUniversity
@@ -60,7 +64,7 @@ class App extends React.Component {
                 Educate
               </div>
             </Menu.Item>
-            <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
+            <Menu.Item key="settings" disabled icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <AiFillSetting
