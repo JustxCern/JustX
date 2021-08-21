@@ -20,6 +20,7 @@ class App extends React.Component {
 
   handleClick = (e) => {
     console.log("click ", e);
+    document.getElementById("body").innerHTML = e.key;
     this.setState({ current: e.key });
   };
 
@@ -52,7 +53,7 @@ class App extends React.Component {
                 Report
               </div>
             </Menu.Item>
-            <Menu.Item key="educate" disabled icon={<AppstoreOutlined />}>
+            <Menu.Item key="educate" icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <FaUniversity
@@ -64,7 +65,7 @@ class App extends React.Component {
                 Educate
               </div>
             </Menu.Item>
-            <Menu.Item key="settings" disabled icon={<AppstoreOutlined />}>
+            <Menu.Item key="settings" icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <AiFillSetting
@@ -73,11 +74,12 @@ class App extends React.Component {
                     style={{ marginRight: "5px" }}
                   />
                 }
-                Educate
+                Preferences
               </div>
             </Menu.Item>
           </Menu>
         </Row>
+        <Row id="body"></Row>
       </>
     );
   }
