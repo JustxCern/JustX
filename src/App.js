@@ -53,7 +53,7 @@ class App extends React.Component {
                 Report
               </div>
             </Menu.Item>
-            <Menu.Item key="educate" icon={<AppstoreOutlined />}>
+            <Menu.Item key="educate" disabled icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <FaUniversity
@@ -65,7 +65,7 @@ class App extends React.Component {
                 Educate
               </div>
             </Menu.Item>
-            <Menu.Item key="settings" icon={<AppstoreOutlined />}>
+            <Menu.Item key="settings" disabled icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <AiFillSetting
