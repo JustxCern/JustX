@@ -1,29 +1,32 @@
-import {
-  MailOutlined,
-  AppstoreOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import ReactDOM from "react-dom";
+import { AppstoreOutlined } from "@ant-design/icons";
 import React from "react";
+import { Collapse } from "antd";
 import { Menu, Row, Typography } from "antd";
-import { RiCriminalLine } from "react-icons/ri";
 import { FaUniversity } from "react-icons/fa";
 import { AiFillSetting } from "react-icons/ai";
+import { RiCriminalLine } from "react-icons/ri";
 
+const { Panel } = Collapse;
 const { Title } = Typography;
-const { SubMenu } = Menu;
 
 class App extends React.Component {
   state = {
     current: "mail",
   };
-
-  handleClick = (e) => {
-    console.log("click ", e);
-    document.getElementById("body").innerHTML = e.key;
-    this.setState({ current: e.key });
-  };
-
+  constructor() {
+    super();
+    this.state = { render: "" };
+  }
+  handleClick(compName, e) {
+    console.log(compName);
+    this.setState({ render: compName });
+  }
+  _renderSubComp() {
+    switch (this.state.render) {
+      case "report":
+        return <Report />;
+    }
+  }
   render() {
     const { current } = this.state;
     return (
@@ -37,11 +40,11 @@ class App extends React.Component {
             <Title>JustX</Title>
           </div>
           <Menu
-            onClick={this.handleClick}
+            onClick={this.handleClick.bind(this, "report")}
             selectedKeys={[current]}
             mode="horizontal"
           >
-            <Menu.Item key="report" icon={<RiCriminalLine />}>
+            <Menu.Item key="report" icon={<RiCriminalLine />} to="/groups">
               <div class="centered-label">
                 {
                   <RiCriminalLine
@@ -51,6 +54,7 @@ class App extends React.Component {
                   />
                 }
                 Report
+                {/* <Link to="/build">Build</Link> */}
               </div>
             </Menu.Item>
             <Menu.Item key="educate" disabled icon={<AppstoreOutlined />}>
@@ -80,7 +84,32 @@ class App extends React.Component {
           </Menu>
         </Row>
         <Row id="body"></Row>
+        {this._renderSubComp()}
       </>
+    );
+  }
+}
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+class Report extends React.Component {
+  render() {
+    return (
+      <Collapse defaultActiveKey={["1"]}>
+        <Panel header="This is panel header 1" key="1">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 2" key="2">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 3" key="3">
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
     );
   }
 }
