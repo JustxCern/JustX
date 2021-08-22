@@ -5,6 +5,9 @@ import { Menu, Row, Typography } from "antd";
 import { FaUniversity } from "react-icons/fa";
 import { AiFillSetting } from "react-icons/ai";
 import { RiCriminalLine } from "react-icons/ri";
+import { GrUserPolice } from "react-icons/gr";
+import { GiInjustice } from "react-icons/gi";
+import { IoIosPeople } from "react-icons/io";
 
 const { Panel } = Collapse;
 const { Title } = Typography;
@@ -49,12 +52,11 @@ class App extends React.Component {
                 {
                   <RiCriminalLine
                     size={20}
-                    color="blue"
+                    color="black"
                     style={{ marginRight: "5px" }}
                   />
                 }
                 Report
-                {/* <Link to="/build">Build</Link> */}
               </div>
             </Menu.Item>
             <Menu.Item key="educate" disabled icon={<AppstoreOutlined />}>
@@ -62,7 +64,7 @@ class App extends React.Component {
                 {
                   <FaUniversity
                     size={20}
-                    color="black"
+                    color="blue"
                     style={{ marginRight: "5px" }}
                   />
                 }
@@ -100,13 +102,58 @@ class Report extends React.Component {
   render() {
     return (
       <Collapse defaultActiveKey={["1"]}>
-        <Panel header="This is panel header 1" key="1">
+        <Panel
+          showArrow={false}
+          header={
+            <div class="centered-label">
+              {
+                <GrUserPolice
+                  size={20}
+                  color="black"
+                  style={{ marginRight: "5px" }}
+                />
+              }{" "}
+              Stopped by Police
+            </div>
+          }
+          key="1"
+        >
           <p>{text}</p>
         </Panel>
-        <Panel header="This is panel header 2" key="2">
+        <Panel
+          showArrow={false}
+          header={
+            <div class="centered-label">
+              {
+                <GiInjustice
+                  size={20}
+                  color="black"
+                  style={{ marginRight: "5px" }}
+                />
+              }{" "}
+              Voting Rights
+            </div>
+          }
+          key="2"
+        >
           <p>{text}</p>
         </Panel>
-        <Panel header="This is panel header 3" key="3">
+        <Panel
+          showArrow={false}
+          header={
+            <div class="centered-label">
+              {
+                <IoIosPeople
+                  size={20}
+                  color="black"
+                  style={{ marginRight: "5px" }}
+                />
+              }{" "}
+              Protestors' Rights
+            </div>
+          }
+          key="3"
+        >
           <p>{text}</p>
         </Panel>
       </Collapse>
