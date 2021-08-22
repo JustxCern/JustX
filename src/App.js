@@ -20,14 +20,15 @@ class App extends React.Component {
     super();
     this.state = { render: "" };
   }
-  handleClick(compName, e) {
-    console.log(compName);
-    this.setState({ render: compName });
+  handleClick(e) {
+    this.setState({ render: e.key });
   }
   _renderSubComp() {
     switch (this.state.render) {
-      case "report":
-        return <Report />;
+      case "educate":
+        return <Educate />;
+      case "preferences":
+        return <Preferences />;
     }
   }
   render() {
@@ -43,7 +44,7 @@ class App extends React.Component {
             <Title>JustX</Title>
           </div>
           <Menu
-            onClick={this.handleClick.bind(this, "report")}
+            onClick={this.handleClick.bind(this)}
             selectedKeys={[current]}
             mode="horizontal"
           >
@@ -59,7 +60,7 @@ class App extends React.Component {
                 Report
               </div>
             </Menu.Item>
-            <Menu.Item key="educate" disabled icon={<AppstoreOutlined />}>
+            <Menu.Item key="educate" icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <FaUniversity
@@ -71,7 +72,7 @@ class App extends React.Component {
                 Educate
               </div>
             </Menu.Item>
-            <Menu.Item key="settings" disabled icon={<AppstoreOutlined />}>
+            <Menu.Item key="preferences" icon={<AppstoreOutlined />}>
               <div class="centered-label">
                 {
                   <AiFillSetting
@@ -98,7 +99,70 @@ const text = `
   it can be found as a welcome guest in many households across the world.
 `;
 
-class Report extends React.Component {
+class Educate extends React.Component {
+  render() {
+    return (
+      <Collapse defaultActiveKey={["1"]}>
+        <Panel
+          showArrow={false}
+          header={
+            <div class="centered-label">
+              {
+                <GrUserPolice
+                  size={20}
+                  color="black"
+                  style={{ marginRight: "5px" }}
+                />
+              }{" "}
+              Stopped by Police
+            </div>
+          }
+          key="1"
+        >
+          <p>{text}</p>
+        </Panel>
+        <Panel
+          showArrow={false}
+          header={
+            <div class="centered-label">
+              {
+                <GiInjustice
+                  size={20}
+                  color="black"
+                  style={{ marginRight: "5px" }}
+                />
+              }{" "}
+              Voting Rights
+            </div>
+          }
+          key="2"
+        >
+          <p>{text}</p>
+        </Panel>
+        <Panel
+          showArrow={false}
+          header={
+            <div class="centered-label">
+              {
+                <IoIosPeople
+                  size={20}
+                  color="black"
+                  style={{ marginRight: "5px" }}
+                />
+              }{" "}
+              Protestors' Rights
+            </div>
+          }
+          key="3"
+        >
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
+    );
+  }
+}
+
+class Preferences extends React.Component {
   render() {
     return (
       <Collapse defaultActiveKey={["1"]}>
