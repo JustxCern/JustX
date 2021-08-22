@@ -1,13 +1,22 @@
 import { AppstoreOutlined } from "@ant-design/icons";
 import React from "react";
-import { Collapse } from "antd";
-import { Menu, Row, Typography } from "antd";
+import {
+  Collapse,
+  Menu,
+  Row,
+  Col,
+  Typography,
+  Checkbox,
+  PageHeader,
+} from "antd";
 import { FaUniversity } from "react-icons/fa";
-import { AiFillSetting } from "react-icons/ai";
+import { AiFillSetting, AiFillSound } from "react-icons/ai";
 import { RiCriminalLine } from "react-icons/ri";
 import { GrUserPolice } from "react-icons/gr";
 import { GiInjustice } from "react-icons/gi";
-import { IoIosPeople } from "react-icons/io";
+import { IoIosPeople, IoMdSettings } from "react-icons/io";
+import { BsCameraVideoFill } from "react-icons/bs";
+import { MdSettingsApplications } from "react-icons/md";
 
 const { Panel } = Collapse;
 const { Title } = Typography;
@@ -25,6 +34,8 @@ class App extends React.Component {
   }
   _renderSubComp() {
     switch (this.state.render) {
+      case "report":
+        return <Report />;
       case "educate":
         return <Educate />;
       case "preferences":
@@ -163,6 +174,95 @@ class Educate extends React.Component {
 }
 
 class Preferences extends React.Component {
+  render() {
+    return (
+      <>
+        <div class="centered-label">
+          <Checkbox.Group>
+            <Row>
+              <PageHeader
+                className="site-page-header"
+                // onBack={() => null}
+                title={
+                  <div class="centered-label">
+                    <BsCameraVideoFill
+                      size={20}
+                      color="black"
+                      style={{ marginRight: "5px" }}
+                    />
+                    Video preferences
+                  </div>
+                }
+              />
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="A">Capture video using front-camera</Checkbox>
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="B">Turn off screen while recording</Checkbox>
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="C">Double tap screen to stop recording</Checkbox>
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="D">Keep a local copy of videos</Checkbox>
+            </Row>
+
+            <Row>
+              <PageHeader
+                className="site-page-header"
+                // onBack={() => null}
+                title={
+                  <div class="centered-label">
+                    <AiFillSound
+                      size={20}
+                      color="black"
+                      style={{ marginRight: "5px" }}
+                    />
+                    Sound preferences
+                  </div>
+                }
+              />
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="A">
+                SOS emergency sound with volume-up key
+              </Checkbox>
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="B">Turn off speaker when app is in use</Checkbox>
+            </Row>
+
+            <Row>
+              <PageHeader
+                className="site-page-header"
+                // onBack={() => null}
+                title={
+                  <div class="centered-label">
+                    <IoMdSettings
+                      size={20}
+                      color="black"
+                      style={{ marginRight: "5px" }}
+                    />
+                    App behavior
+                  </div>
+                }
+              />
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="A">Periodically send diagnostic data</Checkbox>
+            </Row>
+            <Row type="flex" align="middle" style={{ marginLeft: "30px" }}>
+              <Checkbox value="B">Enable high-contrast mode</Checkbox>
+            </Row>
+          </Checkbox.Group>
+        </div>
+      </>
+    );
+  }
+}
+
+class Report extends React.Component {
   render() {
     return (
       <Collapse defaultActiveKey={["1"]}>
