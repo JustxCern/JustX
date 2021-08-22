@@ -47,11 +47,14 @@ class App extends React.Component {
     return (
       <>
         <Row
-          style={{ backgroundColor: "rgb(255, 255, 95)" }}
+          style={{ backgroundColor: "#fffc00" }}
           justify="center"
           align="top"
         >
-          <div class="centered-title">
+          <div
+            class="centered-title"
+            style={{ marginTop: "1px", marginBottom: "-8px" }}
+          >
             <Title>JustX</Title>
           </div>
           <Menu
