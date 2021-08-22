@@ -67,7 +67,7 @@ class App extends React.Component {
                 {
                   <RiCriminalLine
                     size={20}
-                    color="black"
+                    color="blue"
                     style={{ marginRight: "5px" }}
                   />
                 }
@@ -79,7 +79,7 @@ class App extends React.Component {
                 {
                   <FaUniversity
                     size={20}
-                    color="blue"
+                    color="black"
                     style={{ marginRight: "5px" }}
                   />
                 }
